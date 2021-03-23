@@ -67,16 +67,22 @@ app.delete('/users/:id', function (req, res) {
 })
 
 //alert api route
-app.post('/status', jsonParser, function (req, res) {
+app.get('/status', jsonParser,function (req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  const data = new Users({
-    name: req.body.name,
-    email: req.body.email,
-    address: req.body.email
-  })
-  data.save().then((result) => {
-    res.status(201).json(result)
-  }).catch((error) => console.warn(error))
+    let name  = req.param('name');
+    let email = req.param('email');
+    let address = req.param('address');
+
+    res.send(name + ' ' + email + ' ' + address)
+
+    const status = new Users({
+      name: name,
+      email: email,
+      address: address
+    })
+    status.save()
+
+    
 })
 
 //put/update api route
