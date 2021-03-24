@@ -67,20 +67,22 @@ app.delete('/users/:id', function (req, res) {
 })
 
 //alert api route
-app.get('/status', jsonParser,function (req, res) {
+app.get('/alert', jsonParser,function (req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
-    let name  = req.param('name');
-    let email = req.param('email');
-    let address = req.param('address');
+    let OwnerName  = req.param('OwnerName');
+    let Vno = req.param('Vno');
+    let lng = req.param('lng');
+    let lat = req.param('lat');
 
-    res.send(name + ' ' + email + ' ' + address)
+    res.send(OwnerName + ' ' + Vno + ' ' + lng+ ' ' + lat)
 
-    const status = new Users({
-      name: name,
-      email: email,
-      address: address
+    const Alert = new alert({
+      OwnerName: OwnerName,
+      Vno: Vno,
+      lng: lng,
+      lat: lat
     })
-    status.save().then((data) => {
+    status.Alert().then((data) => {
       res.json(data)
     })
 
