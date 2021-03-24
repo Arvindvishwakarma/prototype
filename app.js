@@ -79,8 +79,8 @@ app.get('/alert', jsonParser,function (req, res) {
     const Alert = new alert({
       OwnerName: OwnerName,
       Vno: Vno,
-      lng: lng,
-      lat: lat
+      longnitude: lng,
+      latitude: lat
     })
     Alert.save().then((data) => {
       res.json(data)
