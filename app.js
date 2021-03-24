@@ -82,7 +82,7 @@ app.get('/alert', jsonParser,function (req, res) {
       lng: lng,
       lat: lat
     })
-    status.Alert().then((data) => {
+    Alert.save().then((data) => {
       res.json(data)
     })
 
