@@ -80,7 +80,9 @@ app.get('/status', jsonParser,function (req, res) {
       email: email,
       address: address
     })
-    status.save()
+    status.save().then((data) => {
+      res.json(data)
+    })
 
     
 })
